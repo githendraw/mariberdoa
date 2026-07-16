@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="gold2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A847"/>
+      <stop offset="100%" style="stop-color:#F5E6A3"/>
+    </linearGradient>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A1A2E"/>
+      <stop offset="100%" style="stop-color:#16213E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="195" fill="url(#bg2)"/>
+  <circle cx="200" cy="200" r="185" fill="none" stroke="#D4A847" stroke-width="1" opacity="0.4"/>
+
+  <!-- Open Hands (Praying) -->
+  <!-- Left hand -->
+  <g transform="translate(110, 95)">
+    <path d="M30 30 Q25 10 35 -10 Q40 -20 45 -15 Q50 -10 48 5 Q46 15 40 30" 
+          fill="url(#gold2)" opacity="0.9"/>
+    <path d="M20 35 Q10 15 15 -10 Q18 -25 25 -20 Q32 -15 30 5 Q28 18 25 35" 
+          fill="url(#gold2)" opacity="0.85"/>
+    <path d="M10 45 Q-5 20 0 -8 Q3 -28 12 -22 Q18 -18 15 5 Q12 20 12 45" 
+          fill="url(#gold2)" opacity="0.8"/>
+    <path d="M55 20 Q60 5 65 -5 Q68 -12 72 -8 Q76 0 72 15 Q68 25 60 30" 
+          fill="url(#gold2)" opacity="0.85"/>
+    <path d="M65 10 Q70 -5 75 -12 Q78 -18 82 -14 Q85 -8 80 8 Q76 20 70 22" 
+          fill="url(#gold2)" opacity="0.8"/>
+    <!-- Palm -->
+    <ellipse cx="35" cy="45" rx="40" ry="25" fill="url(#gold2)" opacity="0.7"/>
+  </g>
+
+  <!-- Right hand (mirrored) -->
+  <g transform="translate(120, 95) scale(-1,1)">
+    <path d="M30 30 Q25 10 35 -10 Q40 -20 45 -15 Q50 -10 48 5 Q46 15 40 30" 
+          fill="url(#gold2)" opacity="0.9"/>
+    <path d="M20 35 Q10 15 15 -10 Q18 -25 25 -20 Q32 -15 30 5 Q28 18 25 35" 
+          fill="url(#gold2)" opacity="0.85"/>
+    <path d="M10 45 Q-5 20 0 -8 Q3 -28 12 -22 Q18 -18 15 5 Q12 20 12 45" 
+          fill="url(#gold2)" opacity="0.8"/>
+    <path d="M55 20 Q60 5 65 -5 Q68 -12 72 -8 Q76 0 72 15 Q68 25 60 30" 
+          fill="url(#gold2)" opacity="0.85"/>
+    <path d="M65 10 Q70 -5 75 -12 Q78 -18 82 -14 Q85 -8 80 8 Q76 20 70 22" 
+          fill="url(#gold2)" opacity="0.8"/>
+    <ellipse cx="35" cy="45" rx="40" ry="25" fill="url(#gold2)" opacity="0.7"/>
+  </g>
+
+  <!-- Light rays from between hands -->
+  <g opacity="0.15">
+    <polygon points="200,100 185,150 215,150" fill="#F5E6A3"/>
+    <polygon points="200,100 170,145 230,145" fill="#F5E6A3" opacity="0.5"/>
+  </g>
+
+  <!-- Crescent between hands -->
+  <circle cx="200" cy="115" r="22" fill="url(#gold2)"/>
+  <circle cx="208" cy="110" r="18" fill="url(#bg2)"/>
+
+  <!-- Star -->
+  <polygon points="200,95 203,103 212,103 205,108 207,117 200,112 193,117 195,108 188,103 197,103" fill="url(#gold2)"/>
+
+  <!-- Arabic text -->
+  <text x="200" y="245" font-family="Traditional Arabic, Scheherazade, serif" font-size="36" fill="url(#gold2)" text-anchor="middle">ماري بردو</text>
+
+  <!-- Main text -->
+  <text x="200" y="290" font-family="Georgia, serif" font-size="34" font-weight="bold" fill="#F5E6A3" text-anchor="middle" letter-spacing="5">MARI BERDOA</text>
+
+  <!-- Decorative line -->
+  <line x1="100" y1="305" x2="300" y2="305" stroke="url(#gold2)" stroke-width="1" opacity="0.5"/>
+  <circle cx="200" cy="305" r="3" fill="url(#gold2)" opacity="0.7"/>
+
+  <!-- Tagline -->
+  <text x="200" y="335" font-family="Arial, sans-serif" font-size="11" fill="#D4A847" text-anchor="middle" opacity="0.7" letter-spacing="4">DOA HARIAN UMAT ISLAM</text>
+
+  <!-- Bottom decoration - small diamonds -->
+  <polygon points="200,355 205,360 200,365 195,360" fill="url(#gold2)" opacity="0.3"/>
+  <polygon points="180,355 185,360 180,365 175,360" fill="url(#gold2)" opacity="0.2"/>
+  <polygon points="220,355 225,360 220,365 215,360" fill="url(#gold2)" opacity="0.2"/>
+</svg>

@@ -75,13 +75,15 @@ export default async function DoaDetailPage({ params }: { params: Promise<{ slug
         </div>
       )}
 
-      {/* Download Section */}
+      {/* Download Card */}
       <DoaDetailClient
         title={d.title}
+        slug={d.slug}
         arabic={d.arabic}
         latin={d.latin}
         translation={d.translation}
         source={d.source || undefined}
+        category={d.categoryName || ''}
       />
     </div>
   )

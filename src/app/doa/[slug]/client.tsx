@@ -1,14 +1,15 @@
 'use client'
 import { useState, useRef } from 'react'
-import { Download, Loader2, ImageIcon, Check } from 'lucide-react'
+import { Download, Loader2, Check } from 'lucide-react'
 
 interface Props {
   title: string
+  slug: string
   arabic: string
   latin: string
   translation: string
   source?: string
-  background?: 'emerald' | 'amber' | 'navy' | 'rose'
+  category: string
 }
 
 const BG_GRADIENTS: Record<string, string> = {
@@ -18,11 +19,11 @@ const BG_GRADIENTS: Record<string, string> = {
   rose: 'from-rose-900 via-rose-800 to-rose-950',
 }
 
-const BG_PATTERNS: Record<string, string> = {
-  emerald: 'bg-[radial-gradient(ellipse_at_top,rgba(52,211,153,0.05),transparent_60%)]',
-  amber: 'bg-[radial-gradient(ellipse_at_top,rgba(251,191,36,0.05),transparent_60%)]',
-  navy: 'bg-[radial-gradient(ellipse_at_top,rgba(96,165,250,0.05),transparent_60%)]',
-  rose: 'bg-[radial-gradient(ellipse_at_top,rgba(251,113,133,0.05),transparent_60%)]',
+const BG_LABELS: Record<string, string> = {
+  emerald: 'Emerald',
+  amber: 'Amber',
+  navy: 'Navy',
+  rose: 'Rose',
 }
 
 export default function DoaDetailClient(props: Props) {
@@ -54,64 +55,41 @@ export default function DoaDetailClient(props: Props) {
   }
 
   return (
-    <div>
+    <div className="mb-6">
+      <h3 className="text-xs font-semibold text-amber-400/60 uppercase tracking-wider mb-3">Download Kartu Doa</h3>
+
       {/* Background Selector */}
-      <div className="mb-4">
-        <h3 className="text-xs font-semibold text-amber-400/60 uppercase tracking-wider mb-3">Pilih Background</h3>
-        <div className="flex gap-2">
-          {Object.keys(BG_GRADIENTS).map(key => (
-            <button
-              key={key}
-              onClick={() => setBg(key)}
-              className={`w-10 h-10 rounded-full border-2 transition-all ${
-                bg === key ? 'border-amber-400 scale-110' : 'border-white/10 hover:border-white/30'
-              }`}
-            >
-              <div className={`w-full h-full rounded-full bg-gradient-to-br ${BG_GRADIENTS[key]}`} />
-            </button>
-          ))}
-        </div>
+      <div className="flex gap-2 mb-4">
+        {Object.keys(BG_GRADIENTS).map(key => (
+          <button
+            key={key}
+            onClick={() => setBg(key)}
+            className={`w-10 h-10 rounded-full border-2 transition-all ${
+              bg === key ? 'border-amber-400 scale-110' : 'border-white/10 hover:border-white/30'
+            }`}
+            title={BG_LABELS[key]}
+          >
+            <div className={`w-full h-full rounded-full bg-gradient-to-br ${BG_GRADIENTS[key]}`} />
+          </button>
+        ))}
       </div>
 
       {/* Preview Card */}
       <div
         ref={cardRef}
-        className={`relative rounded-2xl overflow-hidden mb-6 bg-gradient-to-br ${BG_GRADIENTS[bg]} ${BG_PATTERNS[bg]}`}
+        className={`relative rounded-2xl overflow-hidden mb-4 bg-gradient-to-br ${BG_GRADIENTS[bg]}`}
         style={{ width: '100%', aspectRatio: '1/1', maxWidth: '500px' }}
       >
-        {/* Decorative Elements */}
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M20 0v40M0 20h40\'/%3E%3C/g%3E%3C/svg%3E")' }} />
-        
-        {/* Content */}
+      
         <div className="relative z-10 h-full flex flex-col items-center justify-center p-8 text-center">
-          {/* Bismillah */}
-          <div className="text-lg sm:text-xl font-arabic text-white/30 mb-6" dir="rtl">
-            ﷽
-          </div>
-
-          {/* Arabic */}
+          <div className="text-lg sm:text-xl font-arabic text-white/30 mb-6" dir="rtl">﷽</div>
           <p className="text-2xl sm:text-3xl font-arabic leading-[2.2] text-amber-200/90 mb-6 px-4" dir="rtl">
             {props.arabic}
           </p>
-
-          {/* Latin */}
-          <p className="text-sm text-white/70 italic mb-4 px-4 max-w-md">
-            {props.latin}
-          </p>
-
-          {/* Translation */}
-          <p className="text-xs text-white/50 leading-relaxed px-4 max-w-sm">
-            {props.translation}
-          </p>
-
-          {/* Source */}
-          {props.source && (
-            <p className="text-[10px] text-emerald-400/50 mt-4">
-              {props.source}
-            </p>
-          )}
-
-          {/* Footer */}
+          <p className="text-sm text-white/70 italic mb-4 px-4 max-w-md">{props.latin}</p>
+          <p className="text-xs text-white/50 leading-relaxed px-4 max-w-sm">{props.translation}</p>
+          {props.source && <p className="text-[10px] text-emerald-400/50 mt-4">{props.source}</p>}
           <div className="absolute bottom-4 left-0 right-0 text-center">
             <p className="text-[9px] text-white/10">mariberdoa.com</p>
           </div>
@@ -129,12 +107,9 @@ export default function DoaDetailClient(props: Props) {
         ) : downloaded ? (
           <><Check className="w-4 h-4" /> Tersimpan!</>
         ) : (
-          <><Download className="w-4 h-4" /> Download Gambar</>
+          <><Download className="w-4 h-4" /> Download Kartu</>
         )}
       </button>
-      <p className="text-xs text-white/20 text-center mt-2">
-        Gambar siap dibagikan ke WhatsApp, Instagram, atau dipajang
-      </p>
     </div>
   )
 }
